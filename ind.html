@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos - Cantina C.A.M</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- Link para o arquivo CSS -->
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Faça seu Pedido - Cantina C.A.M</h2>
+        <form id="pedido-form">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" required>
+            </div>
+            <div class="mb-3">
+                <label for="turma" class="form-label">Turma</label>
+                <input type="text" class="form-control" id="turma" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="tel" class="form-control" id="telefone" required>
+            </div>
+            <div class="mb-3">
+                <label for="HorarioDoRecreio" class="form-label">Horário do Recreio</label>
+                <select class="form-select" id="HorarioDoRecreio" required>
+                    <option value="09:10">09:10</option>
+                    <option value="10:00">10:00</option>
+                    <option value="10:30">10:30</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="pedido" class="form-label">Selecione seu pedido</label>
+                <select class="form-select" id="pedido" required onchange="calcularTotal()">
+                    <option value="5">Tapioca Simples - R$5,00</option>
+                    <option value="7">Tapioca com Queijo - R$7,00</option>
+                    <option value="9">Tapioca com Queijo e Ovo - R$9,00</option>
+                    <option value="5">Misto Simples - R$5,00</option>
+                    <option value="6">Misto com Ovo - R$6,00</option>
+                    <option value="7">Misto com Queijo e Ovo - R$7,00</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="bebida" class="form-label">Selecione sua bebida</label>
+                <select class="form-select" id="bebida" onchange="calcularTotal()">
+                    <option value="0">Nenhuma</option>
+                    <option value="5">Suco de Maracujá - R$5,00</option>
+                    <option value="5">Suco de Goiaba - R$5,00</option>
+                    <option value="5">Suco de Uva - R$5,00</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="pagamento" class="form-label">Forma de Pagamento</label>
+                <select class="form-select" id="pagamento" required onchange="toggleCartao()">
+                    <option value="Entrega">Na entrega</option>
+                    <option value="Pix">Pix</option>
+                    <option value="Cartao">Cartão</option>
+                </select>
+            </div>
+            <div id="cartao-info" class="mb-3" style="display: none;">
+                <label for="numero-cartao" class="form-label">Número do Cartão</label>
+                <input type="text" class="form-control" id="numero-cartao" placeholder="**** **** **** ****">
+                <label for="nome-cartao" class="form-label mt-2">Nome no Cartão</label>
+                <input type="text" class="form-control" id="nome-cartao" placeholder="Nome completo">
+                <label for="validade-cartao" class="form-label mt-2">Validade</label>
+                <input type="text" class="form-control" id="validade-cartao" placeholder="MM/AA">
+                <label for="cvv" class="form-label mt-2">CVV</label>
+                <input type="text" class="form-control" id="cvv" placeholder="3 dígitos">
+                <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" id="salvar-cartao">
+                    <label class="form-check-label" for="salvar-cartao">Salvar cartão para futuros pedidos</label>
+                </div>
+            </div>
+            <h4>Total: R$<span id="total">0.00</span></h4>
+            <button type="submit" class="btn btn-primary w-100">Finalizar Pedido</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script> <!-- Link para o arquivo JavaScript -->
+</body>
+</html>
